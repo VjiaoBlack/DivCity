@@ -24,7 +24,7 @@ $(document).ready(function(){
 });
 
 function mainmenu() {
-    $("#titlebox").prepend("<div id='Play' onClick='rungame()'>Play</div>");
+    $("#titlebox").prepend("<button id='Play' onClick='rungame()'>Play</button>");
     return;
 }
 
@@ -35,8 +35,8 @@ function rungame() {
 
 function quitgame() {
     alert('you won. bye.');
-    document.getElementById("titlebox").innerHTML = "you won, congrats";
-    return();
+    $("#titlebox").html("you won, congrats");
+    return;
 }
 
 
