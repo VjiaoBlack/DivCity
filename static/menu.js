@@ -1,40 +1,77 @@
+var QUERY = ' ';
+var BUILD_ROAD = 'r';
+var BULLDOZE = 'b';
+
+var current_cursor = QUERY;
+
+function build_road() {
+    current_cursor = BUILD_ROAD;
+    console.log("BUILDING ROAD");
+}
+
+function bulldoze() {
+    current_cursor = BULLDOZE;
+}
+
+function query() {
+    current_cursor = QUERY;
+}
+
 $(document).ready(function(){
 
-    setTimeout(function() {
-        $("#titlebox").children().prepend("<p>welcome to divcity!<p>");
-    }, 1000);
-    setTimeout(function() {
-        $("#titlebox").children().prepend("<p>i kinda suck at javascript so this is all i have so far</p>");
-    }, 2000);
-    setTimeout(function() {
-        $("#titlebox").children().prepend("<p>lol</p>");
-    }, 4000);
-    setTimeout(function() {
-        $("#titlebox").children().prepend("<p>i hope you still get something out of this anyway :P</p>");
-    }, 4500);
-    setTimeout(function() {
-        $("#titlebox").children().prepend("<p>here it is!</p>");
-    }, 6000);
+    $("#gamebox").hide();
+    $("#titlebox").hide();
+    $("#titlebox").fadeIn();
 
     setTimeout(function() {
         mainmenu();
         return;
-    }, 7000);
+    }, 1000);
     
 });
 
 function mainmenu() {
-    $("#titlebox").prepend("<button id='Play' onClick='rungame()'>Play</button>");
+    $("#titlebox").append("<button id='Play' onClick='rungame()'>Play</button>");
     return;
 }
 
 function rungame() {
-    alert('click me to win');
-    quitgame();
+    $("#gamebox").fadeIn();
+    $("#titlebox").append("<button id='Win' onClick='quitgame()'>WinGame</button>");
+    $("#Play").hide();
+
+    $(".tile").mouseover(function() {
+        if($(this).css("background-color") == "rgba(0, 0, 0, 0)") {
+            $(this).css("background-color","black");
+        }
+    }).mouseout(function() {
+        // console.log($(this).css("background-color")); // color debug
+        console.log(current_cursor);
+
+        if($(this).css("background-color") == "rgb(0, 0, 0)") {
+            $(this).css("background-color","rgba(0, 0, 0, 0)");
+        }
+    });
+    $(".tile").click(function() {
+        switch(current_cursor) {
+            case 'r':
+                $(this).css("background-color","red");
+                break;
+            case 'b':
+                $(this).css("background-color","rgba(0, 0, 0, 0)");
+                break;
+            case ' ':
+            default:
+                break;
+
+        }
+    });
+
+    return;
 }
 
 function quitgame() {
-    alert('you won. bye.');
+    $("#gamebox").hide();
     $("#titlebox").html("you won, congrats");
     return;
 }
