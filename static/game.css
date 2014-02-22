@@ -19,21 +19,21 @@ br {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 1025px;
+    width: 1050px;
 
 }
 
-#mapbox {
+/*#mapbox {
     margin-left: auto;
     margin-right: auto;
     top: 0px;
-    width: 621px;
+    width: 640px;
     display: inline-block; 
     float:left; 
-}
+}*/
 
 #gamebar {
-    height: 619px;
+    height: 640px;
     width: 150px;
 
     border-color: black;
@@ -46,7 +46,7 @@ br {
 }
 
 #messagebar {
-    height: 619px;
+    height: 640px;
     width: 150px;
 
     border-color: black;
